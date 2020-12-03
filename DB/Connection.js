@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
-
-const URI ='mongodb+srv://LenaK:userdb@oncall-tracker.plnbt.mongodb.net/oncall-tracker?retryWrites=true&w=majority';
+require('dotenv/config');
 
 const connectDB = async () => {
-    await mongoose.connect(URI, { useNewUrlParser: true, useUnifiedTopology: true });
+    await mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true });
     console.log('db connected ..!');
 }
+
+// const usersCollection = connectDB.collection('users')
 
 module.exports = connectDB;
