@@ -35,7 +35,9 @@ app.get('/', (req, res) => {
 //   newLi.appendChild()
 // });
 
-const Port = process.env.Port || 3000
+const Port = process.env.Port || 5000
 
-app.listen(Port, () => console.log('Server started'));
+app.listen(Port, () => {
+  console.log(`Listening on ${Port}`)
+});
 //server can connect to the browser

@@ -1,18 +1,33 @@
 {
   "name": "mongodb_connection",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon server.js"
+    "client-install": "npm install --prefix client",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-react-app": "^3.1.2",
     "body-parser": "^1.19.0",
+    "concurrently": "^5.3.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongoose": "^5.10.16"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/olkras03/oncall-tracker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/olkras03/oncall-tracker/issues"
+  },
+  "homepage": "https://github.com/olkras03/oncall-tracker#readme",
+  "description": ""
 }
