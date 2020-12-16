@@ -6,7 +6,6 @@ import {
     Button
 } from 'reactstrap';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import uuid from 'react-uuid';
 import { connect } from 'react-redux';
 import { getUsers, deleteUser } from '../actions/userActions';
 import PropTypes from 'prop-types';
@@ -24,18 +23,6 @@ class Users extends Component {
         const { users } = this.props.user
         return (
             <Container>
-                <Button
-                    color="light"
-                    style={{ marginBottom: '2rem' }}
-                    onClick={() => {
-                        const name = prompt('Enter name');
-                        if (name) {
-                            this.setState(state => ({
-                                users: [...state.users, { id: uuid(), name }]
-                            }));
-                        }
-                    }}
-                >Add User</Button>
                 <ListGroup>
                     <TransitionGroup className="user-list">
                         {users.map(({ id, name }) => (
@@ -49,7 +36,6 @@ class Users extends Component {
                                     >
                                         &times;
                                         </Button>
-
                                     {name}
                                 </ListGroupItem>
                             </CSSTransition>
