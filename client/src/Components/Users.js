@@ -8,13 +8,17 @@ import {
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import uuid from 'react-uuid';
 import { connect } from 'react-redux';
-import { getUsers } from '../actions/userActions';
+import { getUsers, deleteUser } from '../actions/userActions';
 import PropTypes from 'prop-types';
 
 class Users extends Component {
 
     componentDidMount() {
         this.props.getUsers();
+    }
+
+    onDeleteClick = (id) => {
+        this.props.deleteUser(id);
     }
     render() {
         const { users } = this.props.user
@@ -41,11 +45,7 @@ class Users extends Component {
                                         className="remove-btn"
                                         color="danger"
                                         size="sm"
-                                        onClick={() => {
-                                            this.setState(state => ({
-                                                users: users.filter(user => user.id !== id)
-                                            }));
-                                        }}
+                                        onClick={this.onDeleteClick.bind(this, id)}
                                     >
                                         &times;
                                         </Button>
@@ -63,11 +63,12 @@ class Users extends Component {
 
 Users.propTypes = {
     getUsers: PropTypes.func.isRequired,
-    user: PropTypes.object.isRequired
+    deleteUser: PropTypes.func.isRequired,
+    // user: PropTypes.object.isRequired
 }
 
 const mapStateToProps = (state) => ({
     user: state.user
 });
 
-export default connect(mapStateToProps, { getUsers })(Users);
+export default connect(mapStateToProps, { getUsers, deleteUser })(Users);

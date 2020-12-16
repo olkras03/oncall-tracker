@@ -7,8 +7,9 @@ export const getUsers = () => {
     };
 };
 
-export const deleteUser = () => {
+export const deleteUser = id => {
     return {
-        type: DELETE_USER
+        type: DELETE_USER,
+        payload: id
     };
 };
