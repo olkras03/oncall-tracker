@@ -20,7 +20,7 @@ class Users extends Component {
         this.props.deleteUser(id);
     }
     render() {
-        const { users } = this.props.user
+        const { users } = this.props.user;
         return (
             <Container>
                 <ListGroup>
@@ -50,7 +50,6 @@ class Users extends Component {
 Users.propTypes = {
     getUsers: PropTypes.func.isRequired,
     deleteUser: PropTypes.func.isRequired,
-    // user: PropTypes.object.isRequired
 }
 
 const mapStateToProps = (state) => ({

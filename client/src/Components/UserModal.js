@@ -10,10 +10,10 @@ import {
     Input
 } from 'reactstrap';
 import { connect } from 'react-redux';
-import { addItem } from '../actions/userActions';
+import { addUser } from '../actions/userActions';
+import uuid from 'react-uuid';
 
 class UserModal extends Component {
-
     state = {
         modal: false,
         name: ''
@@ -22,11 +22,27 @@ class UserModal extends Component {
         this.setState({
             modal: !this.state.modal
         });
-    }
+    };
 
     onChange = (e) => {
         this.setState({ [e.target.name]: e.target.value });
-    }
+    };
+
+    onSubmit = (e) => {
+        e.preventDefault();
+
+        const newUser = {
+            id: uuid(),
+            name: this.state.name
+        };
+
+        //Add item via addItem action
+
+        this.props.addUser(newUser);
+
+        //Close modal
+        this.toggle();
+    };
     render() {
         return (
             <div>
@@ -34,11 +50,9 @@ class UserModal extends Component {
                     color="dark"
                     style={{ marginBottom: '2rem' }}
                     onClick={this.toggle}
-                >Add User</Button>
-                <Modal
-                    isOpen={this.state.modal}
-                    toogle={this.toggle}
-                >
+                >Add User
+                </Button>
+                <Modal isOpen={this.state.modal} toogle={this.toggle}>
                     <ModalHeader toggle={this.toggle}>Add to Homies list</ModalHeader>
                     <ModalBody>
                         <Form onSubmit={this.onSubmit}>
@@ -48,13 +62,13 @@ class UserModal extends Component {
                                     type="text"
                                     name="name"
                                     id="user"
-                                    placeholder="Enter your name"
+                                    placeholder="Add user name"
                                     onChange={this.onChange}
                                 />
                                 <Button
                                     color="dark"
                                     style={{ marginBottom: '2rem' }}
-                                    onClick={this.toggle}
+                                    block
                                 >Add User</Button>
                             </FormGroup>
                         </Form>
@@ -65,12 +79,8 @@ class UserModal extends Component {
     }
 }
 
-// const mapStateToProps = (state) => ({
+const mapStateToProps = (state) => ({
+    user: state.user
+})
 
-// })
-
-// const mapDispatchToProps = {
-
-// }
-
-export default connect()(UserModal);
+export default connect(mapStateToProps, { addUser })(UserModal);

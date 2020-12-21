@@ -1,9 +1,9 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import AppNavbar from './Components/AppNavbar';
+import Users from './Components/Users';
 import UserModal from './Components/UserModal';
 
-import Users from './Components/Users';
 import { Provider } from 'react-redux';
 import store from './store';
 import { Container } from 'reactstrap';

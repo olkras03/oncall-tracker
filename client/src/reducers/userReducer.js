@@ -1,13 +1,9 @@
 import uuid from 'react-uuid';
-import { GET_USERS, ADD_USER, DELETE_USER } from '../actions/types';
+import { GET_USERS, ADD_USER, DELETE_USER, USERS_LOADING } from '../actions/types';
 
 const initialState = {
-    users: [
-        { id: uuid(), name: 'Lena' },
-        { id: uuid(), name: 'John' },
-        { id: uuid(), name: 'Rekha' },
-        { id: uuid(), name: 'Mike' },
-    ]
+    users: []
+    loading: false
 }
 
 export default function userReducer(state = initialState, action) {
@@ -20,6 +16,12 @@ export default function userReducer(state = initialState, action) {
             return {
                 ...state,
                 users: state.users.filter(user => user.id !== action.payload) //to access id from userActions
+            }
+
+        case ADD_USER:
+            return {
+                ...state,
+                users: [action.payload, ...state.users] //to add user to the array
             }
         default:
             return state;
