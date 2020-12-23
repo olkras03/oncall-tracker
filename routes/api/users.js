@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const gravatar = require('gravatar');
+const normalize = require('normalize-url');
 const jwt = require('jsonwebtoken');
 const config = require('config');
 const User = require('../../models/User');
@@ -81,7 +82,7 @@ router.post(
         }
     });
 
-
+module.exports = router;
 
 
 // router.post('/', async (req, res) => {
@@ -126,4 +127,4 @@ router.post(
 //     }
 // });
 
-module.exports = router;
+
