@@ -5,32 +5,31 @@ const gravatar = require('gravatar');
 const normalize = require('normalize-url');
 const jwt = require('jsonwebtoken');
 const config = require('config');
-const User = require('../../models/User');
 const { check, validationResult } = require('express-validator');
 
+const User = require('../../models/User');
+
 // @route Post api/users
-// @desc test route
+// @desc Register User
 // @access Public
 router.post(
     '/',
-    [
-        check('name', 'Name is required')
-            .not()
-            .isEmpty(),
-        check('email', 'Please include a valid email').isEmail(),
-        check(
-            'password',
-            'Please enter a password with 6 or more characters'
-        ).isLength({ min: 6 })
-    ],
+    check('name', 'Name is required')
+        .not()
+        .isEmpty(),
+    check('email', 'Please include a valid email').isEmail(),
+    check(
+        'password',
+        'Please enter a password with 6 or more characters'
+    ).isLength({ min: 6 }),
     async (req, res) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
         }
 
-        const { name, email, password } = req.body; //destructuring
-        //see if user exists
+        const { name, email, password } = req.body;
+
         try {
             let user = await User.findOne({ email });
             if (user) {
@@ -84,48 +83,5 @@ router.post(
     });
 
 module.exports = router;
-
-
-// router.post('/', async (req, res) => {
-
-//Gets back all the users
-// router.get('/', async (req, res) => {
-//     try {
-//         const users = await User.find();
-//         res.json(users);
-//     } catch (err) {
-//         res.json({ message: err });
-//     }
-// });
-
-// //Selects specific user by id
-// router.get('/:postId', async (req, res) => {
-//     try {
-//         const specificUser = await User.findById(req.params.postId);
-//         res.json(specificUser);
-//     } catch (err) {
-//         res.json({ message: err });
-//     }
-// });
-
-// //Delete Post
-// router.delete('/:postId', async (req, res) => {
-//     try {
-//         const removedUser = await User.remove({ _id: req.params.postId });
-//         res.json(removedUser);
-//     } catch (err) {
-//         res.json({ message: err });
-//     }
-// });
-
-// router.patch('/:postId', async (req, res) => {
-//     try {
-//         const updatedUser = await User.updateOne({ _id: req.params.postId },
-//             { $set: { firstName: req.body.firstName } });
-//         res.json(updatedUser);
-//     } catch (err) {
-//         res.json({ message: err });
-//     }
-// });
 
 
