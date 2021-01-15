@@ -1,11 +1,13 @@
 import React, { Fragment, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
-import Navbar from './Components/layout/Navbar';
-import Landing from './Components/layout/Landing';
-import Register from './Components/auth/Register';
-import Login from './Components/auth/Login';
-import Alert from './Components/layout/Alert';
+import Navbar from './components/layout/Navbar';
+import Landing from './components/layout/Landing';
+import Register from './components/auth/Register';
+import Login from './components/auth/Login';
+import Alert from './components/layout/Alert';
+import Dashboard from './components/dashboard/Dashboard';
+import PrivateRoute from './components/routing/PrivateRoute';
 import setAuthToken from './utils/setAuthToken';
 import { loadUser } from './actions/auth';
 // import Users from './Components/Users';
@@ -34,6 +36,7 @@ const App = () => {
               {/* switch can only have routes */}
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
+              <PrivateRoute exact path="/dashboard" component={Dashboard} />
             </Switch>
           </section>
           {/* <Container>
