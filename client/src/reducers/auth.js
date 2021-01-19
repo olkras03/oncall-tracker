@@ -45,7 +45,7 @@ function authReducer(state = initialState, action) {
         ...payload,
         isAuthenticated: false,
         loading: false
-      }
+      };
     default:
       return state;
   }
