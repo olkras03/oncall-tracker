@@ -9,7 +9,7 @@ const { check, validationResult } = require('express-validator');
 const User = require('../../models/User');
 
 
-// @route GET/api/auth
+// @route GET api/auth
 // @desc Get user by token
 // @access Private
 router.get('/', auth, async (req, res) => {
@@ -22,7 +22,7 @@ router.get('/', auth, async (req, res) => {
     }
 });
 
-// @route Post api/users
+// @route Post api/auth
 // @desc Authenticate user & get token
 // @access Public
 
@@ -34,18 +34,22 @@ router.post(
         'Password is required'
     ).exists(),
     async (req, res) => {
+        console.log('******request_body', req.body);
+        console.log('******request_header', req.headers);
         const errors = validationResult(req);
+        console.log('*******', errors);
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
         }
 
         const { email, password } = req.body;
-
+        console.log('111111body', req.body);
         try {
             let user = await User.findOne({ email });
             if (!user) {
                 res.status(400).json({ errors: [{ msg: 'Invalid credentials' }] })
             }
+            console.log('111111user', user);
 
             // Compare user and password using method bcrypt.compare
 

@@ -39,7 +39,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
       <p className='lead'>
         <i className='fas fa-user'></i> Create Your Account
       </p>
-      <form className='form' onSubmit={e => onSubmit(e)}>
+      <form className='form' onSubmit={onSubmit}>
         <div className='form-group'>
           <input
             type='text'
@@ -56,13 +56,12 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             placeholder='Email Address'
             name='email'
             value={email}
-            onChange={e => onChange(e)}
+            onChange={onChange}
             required
           />
-          <small className='form-text'
-          >This site uses Gravatar so if you want a profile image, use a
-            Gravatar email</small
-          >
+          <small className='form-text'>
+          This site uses Gravatar so if you want a profile image, use a Gravatar email
+          </small>
         </div>
         <div className='form-group'>
           <input
@@ -71,7 +70,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             name='password'
             minLength='6'
             value={password}
-            onChange={e => onChange(e)}
+            onChange={onChange}
           />
         </div>
         <div className='form-group'>
@@ -81,15 +80,15 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             name='password2'
             minLength='6'
             value={password2}
-            onChange={e => onChange(e)}
+            onChange={onChange}
           />
         </div>
-        <input type='submit' className='btn btn-primary' value='Register' />
+        <input type='submit' className='btn btn-primary' value='Register'/>
       </form>
       <p className='my-1'>
         Already have an account? <Link to='/login'>Sign In</Link>
       </p>
-    </Fragment >
+    </Fragment>
   )
 };
 

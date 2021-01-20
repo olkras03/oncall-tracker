@@ -31,9 +31,10 @@ export const getProfiles = () => async dispatch => {
 
   try {
     const res = await axios.get('/api/profile');
+
     dispatch({
       type: GET_PROFILES,
-      payload: res.data
+      payload: res.data.filter(({ user }) => user!=null)
     })
   } catch (err) {
     dispatch({

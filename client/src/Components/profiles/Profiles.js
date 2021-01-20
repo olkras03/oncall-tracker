@@ -6,6 +6,7 @@ import ProfileItem from './ProfileItem';
 import { getProfiles } from '../../actions/profile';
 
 const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
+  console.log('profiles', profiles);
   useEffect(() => {
     getProfiles();
   }, [getProfiles]);
@@ -14,22 +15,22 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
       {loading ? (
         <Spinner />
       ) : (
-          <Fragment>
-            <h1 className="large text-primary">Homies</h1>
-            <p className="lead">
-              <i className="fab fa-connectdevelop"></i> Homies team
+        <Fragment>
+          <h1 className="large text-primary">Homies</h1>
+          <p className="lead">
+            <i className="fab fa-connectdevelop"></i> Homies team
       </p>
-            <div className="profiles">
-              {profiles.length > 0 ? (
-                profiles.map(profile => (
-                  <ProfileItem key={profile._id} profile={profile} />
-                ))
-              ) : (
-                  <h4>No profiles found...</h4>
-                )}
-            </div>
-          </Fragment>
-        )}
+          <div className="profiles">
+            {profiles.length > 0 ? (
+              profiles.map(profile => (
+                <ProfileItem key={profile._id} profile={profile} />
+              ))
+            ) : (
+              <h4>No profiles found...</h4>
+            )}
+          </div>
+        </Fragment>
+      )}
     </Fragment>
   );
 };

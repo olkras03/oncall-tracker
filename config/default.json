@@ -1,4 +1,4 @@
 {
-  "mongoURI": "mongodb+srv://LenaK:userdb@oncall-tracker.plnbt.mongodb.net/oncall-tracker?retryWrites=true&w=majority",
+  "mongoURI": "mongodb+srv://LenaK:userdb@oncalltracker.6bnvp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
   "jwtSecret": "mysecrettoken"
 }

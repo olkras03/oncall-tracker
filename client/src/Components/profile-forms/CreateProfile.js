@@ -65,7 +65,7 @@ const CreateProfile = ({ createProfile, history }) => {
             onChange={onChange}
           />
           <small className="form-text">
-            Please use comma separated values (eg. HTML,CSS,JavaScript,PHP)
+            Please use comma separated values (eg. HTML, CSS, JavaScript, PHP)
           </small>
         </div>
         <input type="submit" className="btn btn-primary my-1" />
