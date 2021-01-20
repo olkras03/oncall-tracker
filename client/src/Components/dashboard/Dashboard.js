@@ -38,8 +38,6 @@ const Dashboard = ({
   </Fragment>
 }
 
-
-
 Dashboard.propTypes = {
   getCurrentProfile: PropTypes.func.isRequired,
   deleteAccount: PropTypes.func.isRequired,
