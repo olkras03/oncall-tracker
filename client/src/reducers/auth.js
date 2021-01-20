@@ -42,7 +42,7 @@ function authReducer(state = initialState, action) {
       localStorage.removeItem('token');
       return {
         ...state,
-        ...payload,
+        token: null,
         isAuthenticated: false,
         loading: false
       };
