@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react'
-import PropTypes from 'prop-types'
+import React, { Fragment, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import ProfileTop from './ProfileTop';
@@ -8,7 +9,7 @@ import { getProfileById } from '../../actions/profile';
 
 const Profile = ({
   getProfileById,
-  profile: { profile },
+  profile: { profile, loading },
   auth,
   match
 }) => {
@@ -17,7 +18,7 @@ const Profile = ({
   }, [getProfileById, match.params.id]);
   return (
     <Fragment>
-      {profile === null ? (
+      {profile === null || loading? (
         <Spinner />
       ) : (
         <Fragment>

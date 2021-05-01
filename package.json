@@ -1,7 +1,10 @@
 {
-  "name": "mongodb_connection",
+  "name": "oncall-tracker",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "Oncall tracker for developers of Home team",
+  "main": "server.js",
+  "author": "Lena Krasnova",
+  "license": "ISC",
   "scripts": {
     "client-install": "npm install --prefix client",
     "start": "node server.js",
@@ -10,8 +13,6 @@
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-react-app": "^3.1.2",
@@ -34,6 +35,5 @@
   "bugs": {
     "url": "https://github.com/olkras03/oncall-tracker/issues"
   },
-  "homepage": "https://github.com/olkras03/oncall-tracker#readme",
-  "description": ""
+  "homepage": "https://github.com/olkras03/oncall-tracker#readme"
 }

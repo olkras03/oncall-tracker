@@ -35,10 +35,12 @@ const CreateProfile = ({ createProfile, history }) => {
             <option>* Select Professional Status</option>
             <option value="Junior SE">Junior Software Engineer</option>
             <option value="SE">Software Engineer</option>
-            <option value="Senior Software Engineer">Software Engineer</option>
+            <option value="Senior SE">Senior Software Engineer</option>
             <option value="TechLead">Tech Lead</option>
             <option value="Application Architect">Application Architect</option>
             <option value="SDET">Software Development Engineer in Test</option>
+            <option value="BA">Business Analyst</option>
+            <option value="DM">Delivery Manager</option>
           </select>
           <small className="form-text">
             Give an idea of where you are at in your career

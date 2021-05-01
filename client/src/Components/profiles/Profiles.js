@@ -6,7 +6,6 @@ import ProfileItem from './ProfileItem';
 import { getProfiles } from '../../actions/profile';
 
 const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
-  console.log('profiles', profiles);
   useEffect(() => {
     getProfiles();
   }, [getProfiles]);

@@ -13,7 +13,6 @@ const { compare } = require('bcryptjs');
 // @access Private
 router.get('/me', auth, async (req, res) => {
   try {
-    console.log('req.user.id', req.user.id);
     const profile = await Profile.findOne({ user: req.user.id }).populate('user',
       ['name', 'avatar']);
 
@@ -53,7 +52,7 @@ router.post('/', [auth, [
       skills
     } = req.body;
 
-    // Build profile obkect
+    // Build profile object
 
     const profileFields = {};
     profileFields.user = req.user.id;
@@ -104,7 +103,6 @@ router.get('/', async (req, res) => {
 
 router.get('/user/:user_id', async (req, res) => {
   try {
-    console.log('8888logs', req.params.user_id);
     const profile = await Profile.findOne({
       user: req.params.user_id
     }).populate('user', ['name', 'avatar']);

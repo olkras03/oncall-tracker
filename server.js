@@ -1,7 +1,6 @@
 const express = require('express');
 const connectDB = require('./config/db');
 const app = express(); //gives ability to create routes
-// const path = require('path');
 
 //Connect DataBase
 connectDB();

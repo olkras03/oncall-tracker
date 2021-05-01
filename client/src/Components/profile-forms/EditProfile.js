@@ -44,16 +44,19 @@ const EditProfile = ({
         <i className="fas fa-user" /> Add some changes to your profile
       </p>
       <small>* = required field</small>
-      <form className="form" onSubmit={onSubmit}>
+      <form className="form"  autocomplete="off" onSubmit={onSubmit}>
         <div className="form-group">
           <select name="status" value={status} onChange={onChange}>
             <option>* Select Professional Status</option>
             <option value="Junior Software Engineer">Junior Software Engineer</option>
             <option value="Software Engineer">Software Engineer</option>
-            <option value="Senior Software Engineer">Software Engineer</option>
+            <option value="Senior Software Engineer">Senior Software Engineer</option>
             <option value="TechLead">Tech Lead</option>
             <option value="Application Architect">Application Architect</option>
             <option value="Software Development Engineer in Test">Software Development Engineer in Test</option>
+            <option value="Business Analyst">Business Analyst</option>
+            <option value="Product Owner">Product Owner</option>
+            <option value="Delivery Manager">Delivery Manager</option>
           </select>
           <small className="form-text">
             Give us an idea of where you are at in your career
